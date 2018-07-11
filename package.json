@@ -1,0 +1,28 @@
+{
+  "name": "@wowmaking/react-native-subtruck",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "keywords": [
+    "react-native",
+    "subtruck"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wowmaking/react-native-subtruck.git"
+  },
+  "author": {
+    "name": "kurtsergey",
+    "email": "kurtsergey@gmail.com",
+    "url": "https://github.com/kurtsergey"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wowmaking/react-native-subtruck/issues"
+  },
+  "homepage": "https://github.com/wowmaking/react-native-subtruck#README",
+  "peerDependencies": {
+    "@ptomasroos/react-native-idfa": "^2.1.0",
+    "react-native-appsflyer": "^1.2.0"
+  }
+}
