@@ -9,9 +9,12 @@ Install and link [react-native-appsflyer](https://www.npmjs.com/package/react-na
 
 Install and link [react-native-idfa](https://www.npmjs.com/package/@ptomasroos/react-native-idfa)
 
+Install and link [react-native-device-info](https://www.npmjs.com/package/react-native-device-info)
+
 ## API
 
 ### fetchProduct(project)
+Fetches product for current user.
 #### Parameter(s)
 * **project:** String - Project ID registered in SubTruck
 #### Returns Promise of
@@ -27,6 +30,7 @@ SubTruck.fetchProduct('com.wowapp')
 ```
 
 ### trackViewEvent(project, productId)
+Tracks event that current user has faced the product/price. Call it when user clicks 'Subscribe' button.
 #### Parameter(s)
 * **project:** String - Project ID registered in SubTruck
 * **productId:** String
@@ -35,6 +39,7 @@ SubTruck.trackViewEvent('com.wowapp', 'com.wowapp.full.weekly');
 ```
 
 ### trackPurchaseEvent(project, transaction)
+Tracks event that current user has subscribed successfuly.
 #### Parameter(s)
 * **project:** String - Project ID registered in SubTruck
 * **transaction:** 

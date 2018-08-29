@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
 import AppsFlyer from 'react-native-appsflyer';
 import { IDFA, } from '@ptomasroos/react-native-idfa';
+import DeviceInfo from 'react-native-device-info';
 
 
 export default {
@@ -56,7 +57,11 @@ function request(url, params = {}) {
 
 function getIDs() {
     return Promise.all([getAppsFlyerUID(), getIDFA(),])
-        .then(([appsFlyerUID, idfa]) => ({ appsFlyerUID, idfa, }));
+        .then(([appsFlyerUID, idfa]) => ({
+            appsFlyerUID,
+            idfa,
+            deviceCountry: DeviceInfo.getDeviceCountry(),
+        }));
 }
 
 
@@ -84,6 +89,7 @@ function getIDFA() {
         IDFA.getIDFA()
             .then(idfa => {
                 _idfa = idfa;
+                return idfa;
             })
             .catch(() => '');
 }
