@@ -7,7 +7,7 @@
 
 Install and link [react-native-appsflyer](https://www.npmjs.com/package/react-native-appsflyer)
 
-Install and link [react-native-idfa](https://www.npmjs.com/package/@ptomasroos/react-native-idfa)
+Install and link [react-native-adjust](https://www.npmjs.com/package/react-native-adjust)
 
 Install and link [react-native-device-info](https://www.npmjs.com/package/react-native-device-info)
 
