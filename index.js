@@ -56,11 +56,22 @@ function request(url, params = {}) {
 
 
 function getIDs() {
-    return Promise.all([getAppsFlyerUID(), getAdjustUID(), getIDFA(),])
-        .then(([appsFlyerUID, adjustUID, idfa]) => ({
+    return Promise.all([
+        getAppsFlyerUID(),
+        getAdjustUID(),
+        getIDFA(),
+        getIDFV(),
+    ])
+        .then(([
             appsFlyerUID,
             adjustUID,
             idfa,
+            idfv,
+        ]) => ({
+            appsFlyerUID,
+            adjustUID,
+            idfa,
+            idfv,
             deviceCountry: DeviceInfo.getDeviceCountry(),
         }));
 }
@@ -111,6 +122,11 @@ function getIDFA() {
             _idfa = idfa;
             return idfa;
         });
+}
+
+
+function getIDFV() {
+    return DeviceInfo.getUniqueID();
 }
 
 
