@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 import AppsFlyer from 'react-native-appsflyer';
+import { IDFA } from '@ptomasroos/react-native-idfa';
 import { Adjust } from 'react-native-adjust';
 import DeviceInfo from 'react-native-device-info';
 
@@ -113,15 +114,12 @@ function getIDFA() {
     return _idfa ?
         Promise.resolve(_idfa)
         :
-        Adjust[
-            Platform.select({
-                ios: 'getIdfa',
-                android: 'getGoogleAdId',
+        IDFA.getIDFA()
+            .then(idfa => {
+                _idfa = idfa;
+                return idfa;
             })
-        ]((idfa) => {
-            _idfa = idfa;
-            return idfa;
-        });
+            .catch(() => '');
 }
 
 
