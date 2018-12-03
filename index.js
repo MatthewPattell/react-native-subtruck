@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
 import AppsFlyer from 'react-native-appsflyer';
-import { IDFA, } from '@ptomasroos/react-native-idfa';
+import { IDFA } from '@ptomasroos/react-native-idfa';
+import { Adjust } from 'react-native-adjust';
 import DeviceInfo from 'react-native-device-info';
 
 
@@ -56,10 +57,22 @@ function request(url, params = {}) {
 
 
 function getIDs() {
-    return Promise.all([getAppsFlyerUID(), getIDFA(),])
-        .then(([appsFlyerUID, idfa]) => ({
+    return Promise.all([
+        getAppsFlyerUID(),
+        getAdjustUID(),
+        getIDFA(),
+        getIDFV(),
+    ])
+        .then(([
             appsFlyerUID,
+            adjustUID,
             idfa,
+            idfv,
+        ]) => ({
+            appsFlyerUID,
+            adjustUID,
+            idfa,
+            idfv,
             deviceCountry: DeviceInfo.getDeviceCountry(),
         }));
 }
@@ -80,6 +93,21 @@ function getAppsFlyerUID() {
 }
 
 
+let _adjustUID = '';
+
+function getAdjustUID() {
+    return _adjustUID ?
+        Promise.resolve(_adjustUID)
+        :
+        new Promise((resolve) => {
+            Adjust.getAdid((adid) => {
+                _adjustUID = adid || _adjustUID || '';
+                resolve(_adjustUID);
+            });
+        });
+}
+
+
 let _idfa = '';
 
 function getIDFA() {
@@ -92,6 +120,11 @@ function getIDFA() {
                 return idfa;
             })
             .catch(() => '');
+}
+
+
+function getIDFV() {
+    return DeviceInfo.getUniqueID();
 }
 
 
