@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/wowmaking/react-native-subtruck#README",
   "peerDependencies": {
-    "@ptomasroos/react-native-idfa": "*",
+    "react-native-idfa": "^4.1.0",
     "react-native-adjust": "*",
     "react-native-appsflyer": "*",
     "react-native-device-info": "*"

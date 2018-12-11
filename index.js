@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
 import AppsFlyer from 'react-native-appsflyer';
-import { IDFA } from '@ptomasroos/react-native-idfa';
+import { IDFA } from 'react-native-idfa';
 import { Adjust } from 'react-native-adjust';
 import DeviceInfo from 'react-native-device-info';
 
